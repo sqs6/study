@@ -1,12 +1,13 @@
 # D:\Study —— 我的学习代码库（2026.11.01 起）
 
-| 目录 | 内容 |
-|---|---|
-| `C/week01 … week11` | C 语言阶段（2026-11-02 → 2027-01-17），week01 里是 type-table 类型实验工程 |
-| `CPP/week12 … week35` | C++ + 算法 + 网安阶段（2027-01-18 → 2027-07-04） |
-| `python/` | Python 副线（每天 20–30 分钟，10 个阶段） |
-| `notes/` | 跨周笔记：c-notes / cpp-notes / python-notes / 错误清单 |
-| `.gitignore` | 忽略编译产物、VS 配置、Python 缓存 |
+| 目录                    | 内容                                                          |
+| --------------------- | ----------------------------------------------------------- |
+| `C/week01 … week11`   | C 语言阶段（2026-11-02 → 2027-01-17），week01 里是 type-table 类型实验工程 |
+| `CPP/week12 … week35` | C++ + 算法 + 网安阶段（2027-01-18 → 2027-07-04）                    |
+| `python/`             | Python 副线（每天 20–30 分钟，10 个阶段）                               |
+| `notes/`              | 跨周笔记：c-notes / cpp-notes / python-notes / 错误清单              |
+| `.gitignore`          | 忽略编译产物、VS 配置、Python 缓存                                      |
+| `网安相关/`               | 一些与网安相关的信息与知识                                               |
 
 ## 每个周目录里有什么
 
@@ -23,17 +24,29 @@
 
 ## 常用命令
 
-```powershell
-# 一次性建好全部 35 周骨架（可重复执行，会覆盖 README/mistakes）
-powershell -ExecutionPolicy Bypass -File "D:\学习计划\工具\generate_weeks.ps1"
+> 完整的 push / pull 流程、概念说明、报错处理和冲突解决，见 **[notes/git教程/](notes/git教程/)**
+> （入口：[Git详细教程：push和pull](notes/git教程/Git详细教程：push和pull.md)）
 
-# 提交
-cd D:\Study
-git add .
-git commit -m "w01 day1: xxx"
+```bash
+# 进仓库（Git Bash 用正斜杠；PowerShell 用 cd D:\Study）
+cd /d/Study
+
+# 提交并推送（改完文件之后）
+git status                                      # 先看有哪些改动
+git add .                                       # 放进暂存区
+git commit -m "docs: 说清楚这次干了什么"          # 打包成一个版本
+git push                                        # 上传到 GitHub
+
+# 取回 GitHub 上的改动（网页上改过就先 pull）
+git pull --rebase origin main
 
 # 看提交历史
 git log --oneline --graph -20
+```
+
+```powershell
+# 一次性建好全部 35 周骨架（可重复执行，会覆盖 README/mistakes）
+powershell -ExecutionPolicy Bypass -File "D:\学习计划\工具\generate_weeks.ps1"
 ```
 
 ## 编译（MSVC）
@@ -57,29 +70,29 @@ cl /nologo /W4 /std:c++17 hello.cpp /Fe:hello.exe
 
 ### C 语言阶段（2026-11-02 → 2027-01-17）
 
-| 周 | 主题 | 状态 | 产出 |
-|---|---|---|---|
-| week01 | 类型表实验 | 🟡 | [type-table](C/week01/type-table.c/)（已编译运行通过；正式课程 11-02 启动，其余 4 个 .c 待补） |
-| week02 | 循环嵌套 + 一维数组 | ⬜ | |
-| week03 | 二维数组 + 字符与字符串 | ⬜ | |
-| week04 | 函数与递归 | ⬜ | |
-| week05 | 指针（一） | ⬜ | |
-| week06 | 指针（二）+ 函数指针 | ⬜ | |
-| week07 | 结构体 / 联合体 / 枚举 | ⬜ | |
-| week08 | 链表 | ⬜ | |
-| week09 | 文件 IO + 动态内存 | ⬜ | |
-| week10 | 位运算 + 预处理器 + 总复习 | ⬜ | |
-| week11 | C 语言收官 + C++ 语法起步 | ⬜ | |
+| 周      | 主题                | 状态  | 产出                                                                       |
+| ------ | ----------------- | --- | ------------------------------------------------------------------------ |
+| week01 | 类型表实验             | 🟡  | [type-table](C/week01/type-table.c/)（已编译运行通过；正式课程 11-02 启动，其余 4 个 .c 待补） |
+| week02 | 循环嵌套 + 一维数组       | ⬜   |                                                                          |
+| week03 | 二维数组 + 字符与字符串     | ⬜   |                                                                          |
+| week04 | 函数与递归             | ⬜   |                                                                          |
+| week05 | 指针（一）             | ⬜   |                                                                          |
+| week06 | 指针（二）+ 函数指针       | ⬜   |                                                                          |
+| week07 | 结构体 / 联合体 / 枚举    | ⬜   |                                                                          |
+| week08 | 链表                | ⬜   |                                                                          |
+| week09 | 文件 IO + 动态内存      | ⬜   |                                                                          |
+| week10 | 位运算 + 预处理器 + 总复习  | ⬜   |                                                                          |
+| week11 | C 语言收官 + C++ 语法起步 | ⬜   |                                                                          |
 
 ### C++ / 算法 / 网安阶段（2027-01-18 → 2027-07-04）
 
-| 周 | 主题 | 状态 | 产出 |
-|---|---|---|---|
-| week12–16 | C++ 语法地基（类型系统 / 类 / 继承多态） | ⬜ | |
-| week17–24 | C++ 进阶（模板 / STL / 现代 C++ / 工程化 / 并发） | ⬜ | |
-| week25–29 | 算法与数据结构强化 | ⬜ | |
-| week30–33 | 网安融合（汇编 / PE-ELF / 栈溢出 / Web+Python 工具） | ⬜ | |
-| week34–35 | 项目收官 | ⬜ | |
+| 周         | 主题                                      | 状态  | 产出  |
+| --------- | --------------------------------------- | --- | --- |
+| week12–16 | C++ 语法地基（类型系统 / 类 / 继承多态）               | ⬜   |     |
+| week17–24 | C++ 进阶（模板 / STL / 现代 C++ / 工程化 / 并发）    | ⬜   |     |
+| week25–29 | 算法与数据结构强化                               | ⬜   |     |
+| week30–33 | 网安融合（汇编 / PE-ELF / 栈溢出 / Web+Python 工具） | ⬜   |     |
+| week34–35 | 项目收官                                    | ⬜   |     |
 
 ### 里程碑（达成即打勾，面试时这是你的进度证据）
 
@@ -94,13 +107,13 @@ cl /nologo /W4 /std:c++17 hello.cpp /Fe:hello.exe
 
 ## 我的其他成果（链接随建随补）
 
-| 成果 | 链接 |
-|---|---|
-| 个人主页 | <https://github.com/sqs6> |
-| 学习代码库（本仓库） | <https://github.com/sqs6/study> |
-| CTF 题解与成绩 | <https://github.com/sqs6/ctf-writeups> |
-| 技术笔记 / 文章 | <https://github.com/sqs6/articles> |
-| 大赛题型地图 | `notes/OceanBase_题型地图.md` |
+| 成果         | 链接                                     |
+| ---------- | -------------------------------------- |
+| 个人主页       | <https://github.com/sqs6>              |
+| 学习代码库（本仓库） | <https://github.com/sqs6/study>        |
+| CTF 题解与成绩  | <https://github.com/sqs6/ctf-writeups> |
+| 技术笔记 / 文章  | <https://github.com/sqs6/articles>     |
+| 大赛题型地图     | `notes/OceanBase_题型地图.md`              |
 
 ## 提交规范
 
