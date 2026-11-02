@@ -7,7 +7,7 @@
 >
 > **读者**：西电网安大一，路径 C → C++ → Python → 算法 → 网安。
 > **写于**：2026-10-31
-> **配套**：`D:\Study\网安相关\单片机：ESP32与网安.md`（硬件侧）、`D:\Study\notes\`、`D:\Repos\tools`、`D:\Repos\ctf-writeups`
+> **配套**：[《单片机：ESP32 与网安》](https://github.com/sqs6/study/blob/main/网安相关/单片机：ESP32与网安.md)（硬件侧）、[C 语言笔记](https://github.com/sqs6/study/blob/main/notes/c-notes.md)、[自研工具](https://github.com/sqs6/tools)、[CTF 题解](https://github.com/sqs6/ctf-writeups)
 
 ---
 
@@ -459,7 +459,7 @@
 
 ## 7. 能力矩阵：用 IoT 练网安能力
 
-> 与 `D:\Study\网安相关\单片机：ESP32与网安.md` 的硬件侧矩阵互补，这里偏**协议 / 系统 / 云**。
+> 与 [《单片机：ESP32 与网安》](https://github.com/sqs6/study/blob/main/网安相关/单片机：ESP32与网安.md) 的硬件侧矩阵互补，这里偏**协议 / 系统 / 云**。
 
 | #   | 目标能力           | 用 IoT 怎么练                       | 涉及知识               | 产出物                     |
 | --- | -------------- | ------------------------------- | ------------------ | ----------------------- |
@@ -498,7 +498,7 @@
 | 2.1 | ESP32（MicroPython 或 C）→ Mosquitto publish 温湿度 | 真实设备连上真实 Broker   |
 | 2.2 | MQTT over **TLS**，自签 CA，设备侧校验证书               | 一机一证的最小实现         |
 | 2.3 | 上报到简易云端（Node-RED / 自写 Flask），做看板              | 可访问的实时看板          |
-| 2.4 | 项目入库 `D:\Repos\tools` + README + 演示视频         | **作品集第一个 IoT 项目** |
+| 2.4 | 项目入库 [tools 仓库](https://github.com/sqs6/tools) + README + 演示视频 | **作品集第一个 IoT 项目** |
 
 ### 阶段 3：安全专题（4–8 周，转向攻防）
 
@@ -636,7 +636,7 @@
 - [ ] ESP32 上报数据到本地 Mosquitto
 - [ ] 切换 TLS，配置一机一证
 - [ ] 做一个实时看板（Node-RED 或自写后端）
-- [ ] **项目入库 `D:\Repos\tools`** + README + 演示视频
+- [ ] **项目入库 [tools 仓库](https://github.com/sqs6/tools)** + README + 演示视频
 
 ### 阶段 3（安全，4–8 周）
 
@@ -663,4 +663,4 @@
 - 涉及摄像头、位置、健康等数据的 IoT 应用，还需遵守《个人信息保护法》。
 - 文中技术细节以 2026-10 的公开信息为准，实际操作前请核对厂商最新官方文档。
 
-> **写于 2026-10-31 ｜ 孙卿单 ｜ 配套 `D:\Study\网安相关\单片机：ESP32与网安.md`、`D:\Study\notes\`、`D:\Repos\tools`、`D:\Repos\ctf-writeups`**
+> **写于 2026-10-31 ｜ 孙卿单 ｜ 配套见文首「配套」行**

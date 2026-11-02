@@ -7,12 +7,12 @@
 
 ## 📚 这是总纲，实操分册在 [git教程/](git教程/)
 
-| 我想做的事 | 去哪看 |
-|---|---|
-| **先搞懂概念**（三个区、路径对应、谁最后改谁同步） | 👉 **本文**（第一节 ~ 第十节） |
-| **照着一步步推**（Win+R 之后每一行敲什么） | 👉 [git教程/push.md](git教程/push.md) |
-| **从网页取回改动 / 处理冲突** | 👉 [git教程/pull.md](git教程/pull.md) |
-| **一句话速查** | 👉 [git教程/Git详细教程：push和pull.md](git教程/Git详细教程：push和pull.md)（速查表 + 报错对照） |
+| 我想做的事                       | 去哪看                                                                     |
+| --------------------------- | ----------------------------------------------------------------------- |
+| **先搞懂概念**（三个区、路径对应、谁最后改谁同步） | 👉 **本文**（第一节 ~ 第十节）                                                    |
+| **照着一步步推**（Win+R 之后每一行敲什么）  | 👉 [git教程/push.md](git教程/push.md)                                       |
+| **从网页取回改动 / 处理冲突**          | 👉 [git教程/pull.md](git教程/pull.md)                                       |
+| **一句话速查**                   | 👉 [git教程/Git详细教程：push和pull.md](git教程/Git详细教程：push和pull.md)（速查表 + 报错对照） |
 
 > **本文** = 概念 + 我的踩坑 + 我的日常流程（**长期沉淀**）
 > **git教程/** = 逐步实操（**照着敲就行**，2026-10-31 写）
@@ -68,12 +68,12 @@
 
 ### 四个动作
 
-| 命令 | 干什么 | 类比 |
-|---|---|---|
-| `git add .` | 把改动放进**暂存区** | 放进购物车 |
-| `git commit -m "说明"` | 把暂存区打包成**一个版本** | 结账，打快照 |
-| `git push` | 把本地版本**上传到 GitHub** | 把货送出去 |
-| `git pull` | 把 GitHub 的改动**取回本地** | 取货 |
+| 命令                   | 干什么                  | 类比     |
+| -------------------- | -------------------- | ------ |
+| `git add .`          | 把改动放进**暂存区**         | 放进购物车  |
+| `git commit -m "说明"` | 把暂存区打包成**一个版本**      | 结账，打快照 |
+| `git push`           | 把本地版本**上传到 GitHub**  | 把货送出去  |
+| `git pull`           | 把 GitHub 的改动**取回本地** | 取货     |
 
 **`git status` 是安全带** —— 随时看它，它会写明下一步该敲什么。
 
@@ -97,6 +97,7 @@ git push                # ⑦ 真正上传
 ### 每一步该看到什么
 
 **② 第一次 `git status`（文件还是新的）**
+
 ```
 On branch main
 Your branch is up to date with 'origin/main'.
@@ -109,14 +110,17 @@ nothing added to commit but untracked files present (use "git add" to track)
 ```
 
 **⑤ add 之后 `git status`（进了暂存区）**
+
 ```
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-	new file:   notes/C基础笔记.md
+    new file:   notes/C基础笔记.md
 ```
+
 > `Untracked files:` 那一段消失，`Changes to be committed:` 出现 = 成功。
 
 **⑥ commit 的输出**
+
 ```
 [main 998f1d3] docs: 添加 C 语言基础笔记（数据类型/运算符/流程控制，2026-10-24）
  1 file changed, 437 insertions(+)
@@ -124,10 +128,12 @@ Changes to be committed:
 ```
 
 **⑦ push 的输出（重点看最后一行）**
+
 ```
 To https://github.com/sqs6/study.git
    bc681c2..998f1d3  main -> main
 ```
+
 > `bc681c2..998f1d3` = 从旧版本推到新版本；`main -> main` = 本地 main 推到了远程 main。
 > **看到这行就成功了。**
 
@@ -151,12 +157,12 @@ github.com/sqs6/study  →  notes  →  Git使用指南.md
 
 ### 同名 ≠ 同一个东西
 
-| 情况 | 结果 |
-|---|---|
-| 同路径 + 内容改了 | **覆盖更新** |
-| 同路径 + 文件是新的 | **新建** |
-| **同名但不同路径** | **两个不同的文件**，互不覆盖 |
-| 删了本地文件 | GitHub 上也**会消失**（历史里还查得到）|
+| 情况          | 结果                        |
+| ----------- | ------------------------- |
+| 同路径 + 内容改了  | **覆盖更新**                  |
+| 同路径 + 文件是新的 | **新建**                    |
+| **同名但不同路径** | **两个不同的文件**，互不覆盖          |
+| 删了本地文件      | GitHub 上也**会消失**（历史里还查得到） |
 
 > 例：`D:\Study\c-notes.md` 和 `D:\Study\notes\c-notes.md` 同名，
 > 但在 GitHub 上是两个不同的文件（根目录一个、notes/ 一个）。
@@ -166,6 +172,7 @@ github.com/sqs6/study  →  notes  →  Git使用指南.md
 ```
 "notes/C\345\237\272\347\241\200\347\254\224\350\256\260.md"
 ```
+
 这是 git 把「C基础笔记.md」的 UTF-8 字节**转义成八进制**显示。
 `345`=0xE5 `237`=0x9F `272`=0xBA … 拼起来就是「C基」…
 **实际文件没有任何问题，GitHub 页面上也是正常中文。**
@@ -182,14 +189,14 @@ github.com/sqs6/study  →  notes  →  Git使用指南.md
 
 ### 六个类型（够用了）
 
-| 类型 | 什么时候用 | 例子 |
-|---|---|---|
-| `feat` | 新功能 / 新代码 | `feat(week01): 冒泡排序实现` |
-| `fix` | 修 bug | `fix(week01): 修复 %llu 格式化警告` |
-| `docs` | **改文档 / 笔记 / README** | `docs: 添加 C 语言基础笔记` |
-| `chore` | 杂活（改配置、加 .gitignore、初始化） | `chore: 忽略 .env 和编译产物` |
-| `refactor` | 重构（结构变了，功能没变） | `refactor(week05): 链表操作拆成独立函数` |
-| `test` | 加测试 | `test(week02): 补排序正确性测试` |
+| 类型         | 什么时候用                    | 例子                             |
+| ---------- | ------------------------ | ------------------------------ |
+| `feat`     | 新功能 / 新代码                | `feat(week01): 冒泡排序实现`         |
+| `fix`      | 修 bug                    | `fix(week01): 修复 %llu 格式化警告`   |
+| `docs`     | **改文档 / 笔记 / README**    | `docs: 添加 C 语言基础笔记`            |
+| `chore`    | 杂活（改配置、加 .gitignore、初始化） | `chore: 忽略 .env 和编译产物`         |
+| `refactor` | 重构（结构变了，功能没变）            | `refactor(week05): 链表操作拆成独立函数` |
+| `test`     | 加测试                      | `test(week02): 补排序正确性测试`       |
 
 ### 范围（括号里）
 
@@ -217,19 +224,19 @@ be3f259  chore: 初始化 35 周学习骨架（C/CPP week01-35、错题本模板
 
 **两条路都可行，GitHub 网页上每个文件右上角有 ✏️ Edit file，改完点 Commit changes 就自动提交+推送了。**
 
-| | 网页编辑 | 本地 push |
-|---|---|---|
-| 适合 | README、小文档、改错别字 | 代码、多文件、要改很多遍 |
-| 一次改多个文件 | ❌ 一个一个来 | ✅ 一次全加 |
-| 大文件 / 二进制 | ❌ 只能上传 | ✅ 无所谓 |
+|           | 网页编辑            | 本地 push      |
+| --------- | --------------- | ------------ |
+| 适合        | README、小文档、改错别字 | 代码、多文件、要改很多遍 |
+| 一次改多个文件   | ❌ 一个一个来         | ✅ 一次全加       |
+| 大文件 / 二进制 | ❌ 只能上传          | ✅ 无所谓        |
 
 ### 混用规则：**谁最后动，就由谁同步**
 
-| 谁改了 | 我要做什么 |
-|---|---|
+| 谁改了        | 我要做什么                                   |
+| ---------- | --------------------------------------- |
 | **我在本地**改了 | `git add .` → `git commit` → `git push` |
-| **我在网页**改了 | 本地要先 `git pull`，才能看到网页的改动 |
-| 别人给我提了 PR | `git pull` |
+| **我在网页**改了 | 本地要先 `git pull`，才能看到网页的改动               |
+| 别人给我提了 PR  | `git pull`                              |
 
 > **踩过的坑**：我在网页上改了 study 的 README，然后直接 push，git 拒绝了。
 > 因为远程有改动、本地没有。**先 `git pull --rebase origin main` 把云端的取下来，再 push。**
@@ -238,28 +245,28 @@ be3f259  chore: 初始化 35 周学习骨架（C/CPP week01-35、错题本模板
 
 ## 七、常见报错速查表
 
-| 报错 | 原因 | 解法 |
-|---|---|---|
-| `Updates were rejected because the remote contains work that you don't have locally` | 远程有改动、本地没有 | `git pull --rebase origin main` → `git push` |
-| `error: failed to push some refs` | 同上（概括性错误） | 看上面那行提示，多半也是要先 pull |
-| `fatal: pathspec '.' did not match any files` | `git add .` 少了空格，或不在仓库根目录 | 敲 `pwd` 确认位置；`git add .`（add 后面有空格、点前面有空格） |
-| `Author identity unknown` | 没配身份 | `git config --global user.name "孙卿单"` 和 `git config --global user.email "343853210+sqs6@users.noreply.github.com"` |
-| `git: 'bash' is not a git command` | 新版 Git 没有 `git bash` 子命令了 | 直接跑 `D:\git\Git\git-bash.exe` |
-| `git` 不是内部或外部命令 | git 不在当前终端的 PATH 里 | 用完整路径 `D:\git\Git\cmd\git.exe`，或换 Git Bash |
-| 推送要你输用户名密码 | 凭据没命中 | 检查 Windows 凭据管理器里有没有 `git:https://github.com` |
-| 页面上中文全是 `鎴戠殑` 之类 | **文件是 GBK，GitHub 只认 UTF-8** | 见第九节 |
+| 报错                                                                                   | 原因                          | 解法                                                                                                                 |
+| ------------------------------------------------------------------------------------ | --------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `Updates were rejected because the remote contains work that you don't have locally` | 远程有改动、本地没有                  | `git pull --rebase origin main` → `git push`                                                                       |
+| `error: failed to push some refs`                                                    | 同上（概括性错误）                   | 看上面那行提示，多半也是要先 pull                                                                                                |
+| `fatal: pathspec '.' did not match any files`                                        | `git add .` 少了空格，或不在仓库根目录   | 敲 `pwd` 确认位置；`git add .`（add 后面有空格、点前面有空格）                                                                         |
+| `Author identity unknown`                                                            | 没配身份                        | `git config --global user.name "孙卿单"` 和 `git config --global user.email "343853210+sqs6@users.noreply.github.com"` |
+| `git: 'bash' is not a git command`                                                   | 新版 Git 没有 `git bash` 子命令了   | 直接跑 `D:\git\Git\git-bash.exe`                                                                                      |
+| `git` 不是内部或外部命令                                                                      | git 不在当前终端的 PATH 里          | 用完整路径 `D:\git\Git\cmd\git.exe`，或换 Git Bash                                                                         |
+| 推送要你输用户名密码                                                                           | 凭据没命中                       | 检查 Windows 凭据管理器里有没有 `git:https://github.com`                                                                      |
+| 页面上中文全是 `鎴戠殑` 之类                                                                     | **文件是 GBK，GitHub 只认 UTF-8** | 见第九节                                                                                                               |
 
 ---
 
 ## 八、撤销与回退
 
-| 想撤销 | 敲什么 | 效果 |
-|---|---|---|
-| 撤销刚 `add` 的 | `git restore --staged <文件>` | 文件退回"未跟踪"（等于没 add） |
-| 撤销刚 `commit` 的（**还没 push**） | `git reset --soft HEAD~1` | 改动回到暂存区，提交记录消失 |
-| 撤销刚 `commit` 的（还没 push），想丢掉改动 | `git reset --hard HEAD~1` | ⚠️ **改动全丢，慎用** |
-| 改上一次提交的说明 | `git commit --amend -m "新的说明"` | 只改说明，内容不变 |
-| 已经 push 了，想改 | `git push --force-with-lease` | ⚠️ 改写历史，已 push 的要慎用 |
+| 想撤销                           | 敲什么                            | 效果                  |
+| ----------------------------- | ------------------------------ | ------------------- |
+| 撤销刚 `add` 的                   | `git restore --staged <文件>`    | 文件退回"未跟踪"（等于没 add）  |
+| 撤销刚 `commit` 的（**还没 push**）   | `git reset --soft HEAD~1`      | 改动回到暂存区，提交记录消失      |
+| 撤销刚 `commit` 的（还没 push），想丢掉改动 | `git reset --hard HEAD~1`      | ⚠️ **改动全丢，慎用**      |
+| 改上一次提交的说明                     | `git commit --amend -m "新的说明"` | 只改说明，内容不变           |
+| 已经 push 了，想改                  | `git push --force-with-lease`  | ⚠️ 改写历史，已 push 的要慎用 |
 
 > **建议**：除非明确知道后果，否则别用 `--hard` 和 `--force`。
 > 记不住就**先 `git log` 看看现状**，再决定。
@@ -296,15 +303,16 @@ Windows 中文版默认把 `.c` 文件存成 **GBK**（代码页 936），而 **
 $c = Get-Content "文件路径.c" -Raw -Encoding Default        # Default = 系统 ANSI(中文=GBK)
 [System.IO.File]::WriteAllText("文件路径.c", $c, (New-Object System.Text.UTF8Encoding($true)))
 ```
+
 > `UTF8Encoding($true)` = 带 BOM（.c 用）；`$false` = 不带 BOM（.md 用）。
 
 ### 后缀和 Markdown 的关系（另一个常见误解）
 
 **改后缀 ≠ 变成 Markdown。** 后缀只是告诉 GitHub"用哪个渲染器"：
 
-| 后缀 | 渲染器 | 效果 |
-|---|---|---|
-| `.c` | C 语法高亮 | 注释显示成代码 |
+| 后缀    | 渲染器      | 效果                                |
+| ----- | -------- | --------------------------------- |
+| `.c`  | C 语法高亮   | 注释显示成代码                           |
 | `.md` | Markdown | 注释变成普通文字（因为 `//` 在 Markdown 里没意义） |
 
 **真正起作用的是内容里有没有 Markdown 语法**：`# 标题`、`**粗体**`、`- 列表`、`` `代码` ``、``` 代码块 ```。
@@ -313,16 +321,16 @@ $c = Get-Content "文件路径.c" -Raw -Encoding Default        # Default = 系�
 
 ## 十、本机环境备忘
 
-| 项 | 值 |
-|---|---|
-| Git 安装位置 | `D:\git\Git`（**注意**：曾装在 `D:\develop\git\Git`，后来搬过来，开始菜单快捷方式一度失效） |
-| 开 Git Bash | 开始菜单 → Git → Git Bash，或 Win+R 跑 `D:\git\Git\git-bash.exe` |
-| git 可执行文件 | `D:\git\Git\cmd\git.exe`（系统 PATH 里有，CMD/PowerShell 里能直接敲 `git`） |
-| Git Bash 里的路径写法 | `cd /d/Study`（**正斜杠**，盘符前加斜杠） |
-| PowerShell 里的路径写法 | `cd D:\Study`（反斜杠） |
-| 全局身份 | `孙卿单 <343853210+sqs6@users.noreply.github.com>` |
-| 远程地址 | `https://github.com/sqs6/<仓库名>.git`（用 HTTPS；本机 22 端口不通，SSH 走不了） |
-| 凭据 | Windows 凭据管理器里存着 `git:https://github.com`（用户 sqs6），push 不会问密码 |
+| 项                 | 值                                                                |
+| ----------------- | ---------------------------------------------------------------- |
+| Git 安装位置          | `D:\git\Git`（**注意**：曾装在 `D:\develop\git\Git`，后来搬过来，开始菜单快捷方式一度失效） |
+| 开 Git Bash        | 开始菜单 → Git → Git Bash，或 Win+R 跑 `D:\git\Git\git-bash.exe`        |
+| git 可执行文件         | `D:\git\Git\cmd\git.exe`（系统 PATH 里有，CMD/PowerShell 里能直接敲 `git`）  |
+| Git Bash 里的路径写法   | `cd /d/Study`（**正斜杠**，盘符前加斜杠）                                    |
+| PowerShell 里的路径写法 | `cd D:\Study`（反斜杠）                                               |
+| 全局身份              | `孙卿单 <343853210+sqs6@users.noreply.github.com>`                  |
+| 远程地址              | `https://github.com/sqs6/<仓库名>.git`（用 HTTPS；本机 22 端口不通，SSH 走不了）  |
+| 凭据                | Windows 凭据管理器里存着 `git:https://github.com`（用户 sqs6），push 不会问密码    |
 
 ---
 
@@ -331,9 +339,41 @@ $c = Get-Content "文件路径.c" -Raw -Encoding Default        # Default = 系�
 > 这一节留给我自己写 —— **当时的感受比事后的描述有用得多。**
 > 建议按"坑 → 现象 → 原因 → 以后怎么避免"来写。
 
-**坑 1（待补）**
+**坑 1：中文 .c 文件存成 GB18030，MSVC 编译刷警告**
 
-**坑 2（待补）**
+- **现象**：`特定代码练习题.c(1,1): warning C4828: 文件包含在偏移 0x8 处开始的字符，该字符在当前源字符集中无效(代码页 65001)` —— 一片刷屏
+- **原因**：VS 给中文 .c 默认存 GB18030（代码页 936），但 MSVC 编译时按 UTF-8（65001）读，对不上
+- **避免**：文件 → 另存为 → **保存按钮右边的小箭头** → 编码保存 → `Unicode (UTF-8 带签名)`
+
+**坑 2：同一份笔记存了两个文件，改错文件**
+
+- **现象**：`D:\vs创建项目\测试1\测试1\` 下有 `C语言笔记.c` 和 `C语言学习笔记.c`，**内容一模一样**，但一个存成 GB18030、一个存成 UTF-8；改了一个另一个不动，最后不知道该推哪个
+- **原因**：VS「另存为」时顺手改了个文件名，没意识到两份会分叉
+- **避免**：**一个想法只留一个文件**。另存为之后立刻确认留哪个、另一个删掉
+
+**坑 3：`cd /d` 在 cmd 和 Git Bash 里是两种意思**
+
+- **现象**：cmd 里 `cd /d D:\Repos\tools` 能进，Git Bash 里 `cd /d/Repos/tools` 才能进。写反了：cmd 报 `The syntax of the command is incorrect.`，bash 报 `cd: D:Repostools: No such file or directory`
+- **原因**：cmd 的 `/d` 是「顺便换盘」的**开关**；bash 的 `/d` 是**路径的一部分**（D 盘这个文件夹）
+- **避免**：认提示符 —— cmd 是 `D:\Repos\tools>`，bash 是 `孙卿单@LAPTOP ... /d/Repos/tools (main)`。不确定就敲 `pwd`
+
+**坑 4：Git Bash 里反斜杠是转义符**
+
+- **现象**：在 bash 里敲 `cd D:\Repos\tools` → `cd: D:Repostools: No such file or directory`，反斜杠和后面的字母被吃掉了
+- **原因**：bash 里 `\` 是转义符 —— `\R` → `R`，`\t` → **制表符**
+- **避免**：**bash 里路径一律正斜杠**（见坑 3）
+
+**坑 5：Markdown 链接被反引号包住会变成代码块**
+
+- **现象**：写 `` `[标题](url)` ``，在 GitHub 上显示成一串代码，不是能点的链接
+- **原因**：反引号 = 行内代码，优先级高于链接语法
+- **避免**：脚本批量转换后，检查「**反引号包裹的 markdown 链接数 = 0**」
+
+**坑 6：原件和公开版是两份，会漂移**
+
+- **现象**：改完 `study` 里的原件，`articles` 里的公开版还是旧的
+- **原因**：复制出来的副本没有任何自动机制，人只会记得改手边那份
+- **避免**：公开版是**生成物**，只改原件，然后跑同步脚本（见 §十二）
 
 ---
 
@@ -342,8 +382,76 @@ $c = Get-Content "文件路径.c" -Raw -Encoding Default        # Default = 系�
 > 这一节也留给我自己写。写清楚我实际每天是怎么做的，
 > 免得三个月后看着这份文档还要重新想一遍流程。
 
-**我的一天（待补）：**
+### 我的位置
+
+| 我在哪儿                                  | 干什么                                | 管它的工具                   |
+| ------------------------------------- | ---------------------------------- | ----------------------- |
+| `D:\vs创建项目\测试1\测试1\`                  | **用 VS 写 C 代码和笔记**（笔记是 `.c` 全注释形式） | VS 2026 ⚠️ **不在 git 里** |
+| `D:\Study\`                           | **学习仓库**（笔记 Markdown + 代码 + 周进度）   | git ✅                   |
+| `D:\Repos\articles\`                  | **公开文章仓库**（我自己的成果）                 | git ✅                   |
+| `D:\Repos\{sqs6,ctf-writeups,tools}\` | 主页 / 题解 / 自研工具                     | git ✅                   |
+
+> ⚠️ **VS 工程目录不在 git 里** —— 那是我真正的笔记本，但零版本控制。
+> 所以**笔记必须当天搬进 `D:\Study\notes\`**，那才是有备份的地方。
+
+### 场景 A：更新 C 语言笔记（最常用，一次 5 分钟）
+
+```bash
+# 1. 在 VS 里改 C语言笔记.c（编码必须是 UTF-8 带签名，见坑 1）
+
+# 2. 复制内容，粘贴到 D:\Study\notes\c-notes.md 对应位置
+
+# 3. 同步公开版（可选，但建议每次都跑）
+python "D:\学习计划\工具\同步文章到articles.py" --sync
+
+# 4. 提交学习仓库
+cd /d/Study
+git add .
+git commit -m "docs: c-notes 补充 XXX"
+git push
+
+# 5. 如果第 3 步跑了，还要推文章仓库
+cd /d/Repos/articles
+git add .
+git commit -m "docs: 同步 C 语言笔记公开版"
+git push
+```
+
+**第 3 步在干什么**：把 `D:\Study\notes\c-notes.md` 转成公开版放进 `articles\posts\C语言笔记.md`，
+顺手把里面的本机绝对路径换成 GitHub 链接、加一行「原文」回链。
+**公开版是生成物 —— 永远不要手改 `articles\posts\` 里的文件**，改了会被下次 sync 覆盖。
+
+### 场景 B：改网安长文（IoT / ESP32）
+
+跟场景 A **完全一样**，只是原件换成 `D:\Study\网安相关\*.md`。
+同步脚本已经登记了三篇：`IoT.md` → `IoT与网络安全.md`、`单片机：ESP32与网安.md` → `ESP32与网络安全.md`、`c-notes.md` → `C语言笔记.md`。
+
+**要加新文章**：在 `D:\学习计划\工具\同步文章到articles.py` 的 `MAPPING` 里加一块（原路径 / 公开版名 / 标题 / 原文路径 / 插入锚点 / 配套链接），跑一次 `--sync` 就会自动建好。
+
+### 场景 C：写代码 / 交作业
+
+```bash
+cd /d/Study
+git add .
+git commit -m "feat: week02 实现链表逆序并加断言"
+git push
+```
+
+提交说明的写法见 §五。**核心：说清楚「改了什么」，不是「更新」。**
+
+### 每次 push 之前的自检清单
+
+- [ ] `git status` 里**只有**我预期的文件（没有 `????`、没有 `.exe`、没有临时文件）
+- [ ] `git diff` 扫一眼内容 —— 尤其是 `.md`，确认中文没乱码
+- [ ] 提交信息说清了**改了什么**
+- [ ] 推完去网页点开那个文件，**中文能正常显示**（`git push` 成功 ≠ 显示正常）
+
+### 记住这三条
+
+> **push = `git add .` → `git commit -m "..."` → `git push`**，换仓库只改 `cd` 那一行。
+> **`git status` 是安全带**，不确定下一步就敲它。
+> **`git diff` 是后悔药**，提交前看一眼。
 
 ---
 
-*这份文档本身也用 git 维护 —— 改完记得 `git add .` → `git commit` → `git push`。*
+

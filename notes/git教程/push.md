@@ -260,9 +260,11 @@ git push
 
 | 报错 | 解法 |
 |---|---|
-| `fatal: Authentication failed` / 要密码 | 凭据没命中，告诉我，我查 Windows 凭据管理器 |
+| `fatal: Authentication failed` / 要密码 | 凭据没命中：打开「控制面板 → 凭据管理器 → Windows 凭据」，确认 `git:https://github.com` 这条还在（用户 `sqs6`）|
 | `error: failed to push some refs` 且提示 hint 是 non-fast-forward | 同上，先 pull |
-| `remote: Permission to sqs6/xxx.git denied` | 这个仓库的权限/remote 配错了，告诉我 |
+| `remote: Permission to sqs6/xxx.git denied` | 仓库权限或 remote 地址配错了：先 `git remote -v` 核对地址，再用 `git config --global credential.helper manager` 确认凭据助手是启用的 |
+| `GH007: ... would publish a private email address` | 提交邮箱用了真实邮箱：改成 `git config --global user.email "343853210+sqs6@users.noreply.github.com"` |
+| `Please tell me who you are` | git 不知道身份：`git config --global user.name "孙卿单"` 和 `user.email` 各敲一次 |
 
 ---
 
