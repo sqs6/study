@@ -266,6 +266,40 @@ git push
 | `GH007: ... would publish a private email address` | 提交邮箱用了真实邮箱：改成 `git config --global user.email "343853210+sqs6@users.noreply.github.com"` |
 | `Please tell me who you are` | git 不知道身份：`git config --global user.name "孙卿单"` 和 `user.email` 各敲一次 |
 
+### 命令没报错，但敲什么都不响应
+
+**现象**：`git diff`（或 `git log` / `git show`）之后，终端还在显示内容，
+**再敲任何命令都没反应**，`Ctrl+C` 也像没反应。
+
+**原因**：git 把输出交给了**分页器 `less`**。这时候你看到的不是 shell 提示符，
+而是 less 的交互界面 —— **shell 被 less 占住了**，你的输入全被 less 接收，不是丢了。
+
+**当场脱困**：
+
+| 按键 | 作用 |
+|---|---|
+| **`q`** | 退出 less（最常用）|
+| `Ctrl+C` | 强制中断（less 不响应时的兜底）|
+| 空格 / 回车 | 往下翻一页 |
+| `b` / `↑` | 往上翻一页 |
+
+**一劳永逸**（让短输出自动跳过分页、长输出还能翻页）：
+
+```bash
+git config --global core.pager "less -FRX"
+```
+
+| 参数 | 作用 |
+|---|---|
+| `-F` | 内容不满一屏就**自动退出**，不挂住 |
+| `-R` | 保留 ANSI 颜色（不加会看到一堆 `[32m`）|
+| `-X` | 不做初始化/反初始化，退出后终端状态干净 |
+
+**临时绕过**：`git --no-pager diff`（这一次不分页）
+
+> ⚠️ 顺带一提：`git diff` 之外，`git log` / `git show` / `git branch`（带 `-v`）都会走分页器。
+> 养成习惯：**看到内容停住不动，先按 `q`**，别急着敲命令。
+
 ---
 
 ## 一句话总结

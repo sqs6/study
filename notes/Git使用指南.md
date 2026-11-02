@@ -255,6 +255,7 @@ be3f259  chore: 初始化 35 周学习骨架（C/CPP week01-35、错题本模板
 | `git` 不是内部或外部命令                                                                      | git 不在当前终端的 PATH 里          | 用完整路径 `D:\git\Git\cmd\git.exe`，或换 Git Bash                                                                         |
 | 推送要你输用户名密码                                                                           | 凭据没命中                       | 检查 Windows 凭据管理器里有没有 `git:https://github.com`                                                                      |
 | 页面上中文全是 `鎴戠殑` 之类                                                                     | **文件是 GBK，GitHub 只认 UTF-8** | 见第九节                                                                                                               |
+| 终端停住不动、敲什么都不响应                                                                        | `git diff` / `git log` 进了**分页器 `less`** | **按 `q` 退出**；一劳永逸：`git config --global core.pager "less -FRX"`（详见 [push.md](git教程/push.md)）              |
 
 ---
 
